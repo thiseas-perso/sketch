@@ -1,6 +1,3 @@
-
-
-
 const body = document.querySelector('body');
 const resetButton = document.querySelector('#reset')
 const container = document.createElement('div')
@@ -8,7 +5,7 @@ container.style.cssText = 'height: 800px; width: 800px; display: block; line-hei
 body.style.margin = '0'
 body.appendChild(container)
 
-const ALPHA = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p']
+// const ALPHA = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p']
 
 
 function sketch(sideSize = 16) {
@@ -17,7 +14,7 @@ function sketch(sideSize = 16) {
       for (let j = 0; j < sideSize; j++) {
          let div = document.createElement('div')
          div.setAttribute('class', 'square')
-         div.setAttribute('id', `Row${ALPHA[i]}col${j}`)
+         // div.setAttribute('id', `Row${ALPHA[i]}col${j}`)
          if (i % 2 !== 0 && j % 2 !== 0) {
             div.style.cssText = `height: ${pxlSize}px; width: ${pxlSize}px; background-color: gray; display: inline-block`;
          } else if (i % 2 !== 0 && j % 2 === 0) {
@@ -28,13 +25,12 @@ function sketch(sideSize = 16) {
             div.style.cssText = `height: ${pxlSize}px; width: ${pxlSize}px; background-color: gray; display: inline-block`;
          }
          container.appendChild(div)
-
       }
    }
+   eventLstn()
 };
 
 sketch();
-
 
 
 resetButton.addEventListener(('click'), (e) => {
@@ -47,18 +43,19 @@ resetButton.addEventListener(('click'), (e) => {
    }
 })
 
-function randomColor(e) {
+/* function randomColor(e) {
    const R = Math.floor(Math.random() * 257);
    const G = Math.floor(Math.random() * 257);
    const B = Math.floor(Math.random() * 257);
    this.style.backgroundColor = `rgb(${R},${G},${B})`;
 
+} */
+
+function eventLstn() {
+   const squares = document.querySelectorAll('.square')
+   squares.forEach((square) => {
+      square.addEventListener('mouseover', randomColor)
+   })
 }
 
-
-const squares = document.querySelectorAll('.square')
-
-
-squares.forEach((square) => {
-   square.addEventListener('mouseover', randomColor)
-})
+eventLstn();
