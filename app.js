@@ -16,13 +16,13 @@ function sketch(sideSize = 16) {
          div.setAttribute('class', 'square')
          // div.setAttribute('id', `Row${ALPHA[i]}col${j}`)
          if (i % 2 !== 0 && j % 2 !== 0) {
-            div.style.cssText = `height: ${pxlSize}px; width: ${pxlSize}px; background-color: gray; display: inline-block`;
+            div.style.cssText = `height: ${pxlSize}px; width: ${pxlSize}px; background-color: lightgray; display: inline-block`;
          } else if (i % 2 !== 0 && j % 2 === 0) {
-            div.style.cssText = `height: ${pxlSize}px; width: ${pxlSize}px; background-color: darkgray; display: inline-block`;
-         } else if (i % 2 === 0 && j % 2 !== 0) {
-            div.style.cssText = `height: ${pxlSize}px; width: ${pxlSize}px; background-color: darkgray; display: inline-block`;
-         } else {
             div.style.cssText = `height: ${pxlSize}px; width: ${pxlSize}px; background-color: gray; display: inline-block`;
+         } else if (i % 2 === 0 && j % 2 !== 0) {
+            div.style.cssText = `height: ${pxlSize}px; width: ${pxlSize}px; background-color: gray; display: inline-block`;
+         } else {
+            div.style.cssText = `height: ${pxlSize}px; width: ${pxlSize}px; background-color: lightgray; display: inline-block`;
          }
          container.appendChild(div)
       }
@@ -43,13 +43,21 @@ resetButton.addEventListener(('click'), (e) => {
    }
 })
 
-/* function randomColor(e) {
+function randomColor() {
    const R = Math.floor(Math.random() * 257);
    const G = Math.floor(Math.random() * 257);
    const B = Math.floor(Math.random() * 257);
    this.style.backgroundColor = `rgb(${R},${G},${B})`;
 
+}
+
+/* function randomColor(e) {
+   const H = Math.floor(Math.random() * 361);
+   const S = Math.floor(Math.random() * 101);
+   const L = 50
+   this.style.backgroundColor = `hsl(${H},${S}%,${L}%)`;
 } */
+
 
 function eventLstn() {
    const squares = document.querySelectorAll('.square')
